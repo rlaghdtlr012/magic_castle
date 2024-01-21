@@ -1,7 +1,9 @@
+import Game from './Game';
+
 function Home() {
   return (
     <>
-      <p>Hello Magic Castle!!!!!!!</p>
+      <Game />
       <h3>Happy Gaming!!</h3>
     </>
   );

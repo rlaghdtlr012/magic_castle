@@ -15,7 +15,7 @@ const MainMap = styled.div`
 `;
 
 const Game = () => {
-  const [direction, setDirection] = useState<Direction>('UP');
+  const [direction, setDirection] = useState<Direction>('LEFT');
   const [jumping, setJumping] = useState(false);
   const mainMapRef = useRef<HTMLDivElement | null>(null);
   const [playerPosition, setPlayerPosition] = useState<PlayerPosition>({
@@ -44,6 +44,7 @@ const Game = () => {
   const jump = (direction: 'left' | 'right') => {
     const jumpHeight = 100;
     const jumpStartTime = Date.now();
+    const xFix = jumpHeight * Math.cos(Math.PI);
     const jumpAnimation = () => {
       const elapsedTime = Date.now() - jumpStartTime;
       const jumpProgress = Math.min(1, elapsedTime / 500);
@@ -51,11 +52,15 @@ const Game = () => {
         direction === 'right'
           ? Math.min(
               850,
-              playerPosition.x - jumpHeight * Math.cos(jumpProgress * Math.PI),
+              playerPosition.x -
+                xFix -
+                jumpHeight * Math.cos(jumpProgress * Math.PI),
             ) // 오른쪽 점프
           : Math.max(
               0,
-              playerPosition.x + jumpHeight * Math.cos(jumpProgress * Math.PI),
+              playerPosition.x +
+                xFix +
+                jumpHeight * Math.cos(jumpProgress * Math.PI),
             ); // 왼쪽 점프
       const newY =
         playerPosition.y - jumpHeight * Math.sin(jumpProgress * Math.PI);
@@ -66,7 +71,7 @@ const Game = () => {
         requestAnimationFrame(jumpAnimation);
       } else {
         setJumping(false);
-        setPlayerPosition((prevPos) => ({ ...prevPos })); // Reset y position
+        setPlayerPosition((prevPos) => ({ ...prevPos }));
       }
     };
 

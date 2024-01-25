@@ -5,10 +5,11 @@ export const DefaultButtonStyle = styled.button<{
 }>`
   position: relative;
   display: block;
-  width: 330px;
+  width: 120px;
   height: 50px;
   border-radius: 12px;
-  font-size: 16px;
-  background-color: var(--main-color);
+  font-size: 25px;
+  color: yellow;
+  background-color: gray;
   ${({ styleOverrides }) => ({ ...styleOverrides })};
 `;

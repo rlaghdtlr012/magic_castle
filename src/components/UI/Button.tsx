@@ -17,9 +17,8 @@ function DefaultButton({
   return (
     <DefaultButtonStyle styleOverrides={styleOverrides} {...rest}>
       {icon && icon}
-      <div>
-        {/* {centerIcon && centerIcon} */}
-        <p>{label}</p>
+      <div style={{ textAlign: 'center' }}>
+        <p style={{ margin: 0 }}>{label}</p>
       </div>
     </DefaultButtonStyle>
   );

@@ -1,9 +1,9 @@
-const Player = ({ x, y }) => {
+const MainCharacter = ({ x, y }) => {
   return (
     <div
       style={{
         position: 'absolute',
-        width: '50px',
+        width: '25px',
         height: '50px',
         background: 'blue',
         left: `${x}px`,
@@ -13,4 +13,4 @@ const Player = ({ x, y }) => {
   );
 };
 
-export default Player;
+export default MainCharacter;

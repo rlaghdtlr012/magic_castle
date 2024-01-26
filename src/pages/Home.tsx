@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import DefaultButton from '../components/UI/Button';
 import { useNavigate } from 'react-router-dom';
@@ -42,6 +42,13 @@ function Home() {
   const navigate = useNavigate();
   const [img, setImage] = useState('/assets/images/mainCastle.png');
   const [magicTextVisible, setMagicTextVisible] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const startBgm = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -64,7 +71,10 @@ function Home() {
   }, []);
 
   return (
-    <Container>
+    <Container onClick={() => startBgm()}>
+      <audio ref={audioRef} src="/assets/sound/mainBgm.mp3" loop>
+        <track kind="captions" srcLang="en" label="English" />
+      </audio>
       <TitleImg src={img} />
       <MagicText visible={magicTextVisible}>
         <div>마</div>

@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Player from '../components/character/MainCharacter';
+import MainCharacter from '../components/character/MainCharacter';
+import Ladder from '../components/UI/Ladder';
+import Obstacle from '../components/UI/Obstacle';
 
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 type PlayerPosition = {
@@ -88,7 +90,9 @@ const Game = () => {
 
   return (
     <MainMap ref={mainMapRef}>
-      <Player x={playerPosition.x} y={playerPosition.y} />
+      <Ladder top={500} left={400} />
+      <Obstacle top={600} left={600} />
+      <MainCharacter x={playerPosition.x} y={playerPosition.y} />
     </MainMap>
   );
 };

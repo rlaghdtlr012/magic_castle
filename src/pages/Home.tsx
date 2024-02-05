@@ -9,11 +9,13 @@ interface MagicTextProps {
 
 const Container = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 const TitleImg = styled.img`
-  height: 100%;
   width: 100%;
+  height: 100%;
   background-color: black;
 `;
 
@@ -88,7 +90,7 @@ function Home() {
           label="Start"
           onClick={() => navigate('/stage')}
         />
-        <DefaultButton label="Help" />
+        <DefaultButton label="Help" onClick={() => navigate('/help')} />
       </ButtonContainer>
     </Container>
   );

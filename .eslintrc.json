@@ -2,6 +2,10 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["airbnb", "plugin:@typescript-eslint/recommended", "prettier"],
   "plugins": ["@typescript-eslint", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
   "rules": {
     "arrow-parens": "off",
     "react/function-component-definition": [
